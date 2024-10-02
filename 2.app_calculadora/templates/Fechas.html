@@ -1,0 +1,48 @@
+<!-- fechas.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Calculadora de Diferencia de Fechas</h1>
+    <p>Ingresa dos fechas para calcular la diferencia en días:</p>
+    <form action="/Fechas" method="POST">
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <p>Ingrese primera fecha</p>
+                <input type="date" name="fecha2" placeholder="Ingrese segunda fecha" required>
+            </div>
+
+            <div class="col-md-6">
+                <p>Ingrese segunda fecha</p>
+
+                <input type="date" name="fecha1" placeholder="Ingrese primera fecha" required>
+            </div>
+                
+           
+        </div>
+        <div class="row py-3">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-info">
+                    <img src="{{ url_for('static', filename='img/tiempo.gif') }}" width="40" height="40"> CALCULAR TIEMPO
+                </button>
+            </div>
+        </div>
+    </form>
+
+    {% if diferencia_dias is not none %}
+        <div class="row py-2">
+            <div>
+                <h3>La diferencia en días es: {{ diferencia_dias }} días</h3>
+            </div>
+        </div>
+    {% elif error %}
+        <div class="row py-2">
+            <div>
+                <h3>{{ error }}</h3>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
